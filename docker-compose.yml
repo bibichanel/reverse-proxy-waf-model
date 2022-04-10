@@ -1,0 +1,31 @@
+version: '3.5'
+
+services:
+ HostA:
+  build:
+   context: ./
+   dockerfile: Client/Dockerfile
+  container_name: clientTest
+  tty: true
+  networks:
+   net-10.9.0.0:
+    ipv4_address: 10.9.0.5
+
+ Nginx:
+  build:
+   context: ./
+   dockerfile: Nginx/Dockerfile
+  container_name: nginxReverseProxy
+  tty: true
+  ports:
+   - "80:80"
+  networks:
+   net-10.9.0.0:
+    ipv4_address: 10.9.0.6
+
+networks:
+ net-10.9.0.0:
+  name: net-10.9.0.0
+  ipam:
+   config:
+    - subnet: 10.9.0.0/24
