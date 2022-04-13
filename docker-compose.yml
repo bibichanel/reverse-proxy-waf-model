@@ -1,27 +1,41 @@
-version: '3.5'
-
+version: '3'
 services:
- HostA:
+ website:
   build:
-   context: ./
-   dockerfile: Client/Dockerfile
-  container_name: clientTest
-  tty: true
+   context: ./dvwa
+   dockerfile: Dockerfile
+  image: dvwa:custom
+  container_name: dvwa
+  ports:
+   - "5000:80"
   networks:
    net-10.9.0.0:
     ipv4_address: 10.9.0.5
 
- Nginx:
+ proxy:
   build:
-   context: ./
-   dockerfile: Nginx/Dockerfile
-  container_name: nginxReverseProxy
+   context: ./nginx
+   dockerfile: Dockerfile
+  image: nginx:custom
+  container_name: proxy-nginx
   tty: true
   ports:
    - "80:80"
+   - "443:443"
   networks:
    net-10.9.0.0:
     ipv4_address: 10.9.0.6
+    
+ client:
+  build:
+   context: ./client
+   dockerfile: Dockerfile
+  image: client:custom
+  container_name: client
+  tty: true
+  networks:
+   net-10.9.0.0:
+    ipv4_address: 10.9.0.7
 
 networks:
  net-10.9.0.0:

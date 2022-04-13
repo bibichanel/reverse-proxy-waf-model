@@ -1,9 +1,13 @@
 FROM ubuntu:20.04
 
-LABEL author.email=”khanhtrung<bibichanel@gmail.com” \
+LABEL author.email="lytrung15901@gmail.com" \
 	author.name="KhanhTrung"
 	
-#Install software packages inside the container
+
+# Disable waring debconf: delaying package configuration, since apt-utils is not installed
+ENV DEBIAN_FRONTEND=noninteractive
+ENV DEBCONF_NOWARNINGS="yes"
+
 RUN apt-get update  \
     && apt-get -y install  \
           iputils-ping \
@@ -11,8 +15,11 @@ RUN apt-get update  \
           net-tools \
           dnsutils  \
           mtr-tiny  \
-          nano      \
           tcpdump   \
+          nano      \
     && apt-get clean
+    
+CMD ["/bin/bash"]
+     
    
-CMD [ "/bin/bash"]
+

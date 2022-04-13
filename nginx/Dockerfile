@@ -1,23 +1,16 @@
 FROM nginx:latest
 
-LABEL author.email="bibichanel@gmail.com" \
+LABEL author.email="lytrung15901@gmail.com" \
 	author.name="KhanhTrung"
 
 ENV APP_PATH /nginxProxy
 WORKDIR $APP_PATH
 
-RUN sudo unlink /etc/nginx/conf.d/default.conf
+# Disable waring debconf: delaying package configuration, since apt-utils is not installed
+ENV DEBIAN_FRONTEND=noninteractive
+ENV DEBCONF_NOWARNINGS="yes"
 
-#COPY ./reverse-proxy.conf /etc/nginx/sites-available/
+RUN apt-get update -y; exit 0
+RUN apt-get install -y tcpdump
 
-#RUN sudo ln -s /etc/nginx/sites-available/reverse-proxy.conf /etc/nginx/sites-enabled/reverse-proxy.conf
-
-RUN service nginx configtest
-
-RUN service nginx restart
-
-# config file entrypoint.sh
-COPY ./entrypoint.sh /usr/bin/
-RUN chmod +x /usr/bin/entrypoint.sh
-ENTRYPOINT ["entrypoint.sh"]
 EXPOSE 80
