@@ -6,6 +6,8 @@ LABEL author.email="lytrung15901@gmail.com" \
 ENV APP_PATH /nginxProxy
 WORKDIR $APP_PATH
 
+COPY ./nginx.conf /etc/nginx/nginx.conf
+
 # Disable waring debconf: delaying package configuration, since apt-utils is not installed
 ENV DEBIAN_FRONTEND=noninteractive
 ENV DEBCONF_NOWARNINGS="yes"
