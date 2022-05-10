@@ -1,9 +1,9 @@
 # Nginx Reverse Proxy - DVWA - CLient
 
-## Xây dựng mô hình 3 máy ảo chạy trên container của docker.
+## Xây dựng mô hình 4 máy ảo chạy trên container của docker.
  - Client
  - Nginx reverse proxy 
- - DVWA
+ - 2 DVWA 
 
 ## Cách cài đặt
 
