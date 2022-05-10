@@ -1,17 +1,26 @@
 version: '3'
 services:
- website:
+ website_01:
   build:
    context: ./dvwa
    dockerfile: Dockerfile
   image: dvwa:custom
-  container_name: dvwa
+  container_name: dvwa_01
   ports:
    - "5000:80"
   networks:
    net-10.9.0.0:
     ipv4_address: 10.9.0.5
 
+ website_02:
+  image: dvwa:custom
+  container_name: dvwa_02
+  ports:
+  - "5001:80"
+  networks:
+   net-10.9.0.0:
+    ipv4_address: 10.9.0.6
+  
  proxy:
   build:
    context: ./nginx
@@ -24,7 +33,7 @@ services:
    - "443:443"
   networks:
    net-10.9.0.0:
-    ipv4_address: 10.9.0.6
+    ipv4_address: 10.9.0.7
     
  client:
   build:
@@ -35,7 +44,7 @@ services:
   tty: true
   networks:
    net-10.9.0.0:
-    ipv4_address: 10.9.0.7
+    ipv4_address: 10.9.0.8
 
 networks:
  net-10.9.0.0:
