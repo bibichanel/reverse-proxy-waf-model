@@ -4,7 +4,7 @@
  - Client
  - Nginx reverse proxy 
  - 2 DVWA (Damn Vulnerable Web Application)
- - 
+ 
 ## Yêu cầu
  - Máy ảo có dung lượng >= 20GB
  - Được cài đặt **docker** và **docker-compose**
@@ -16,10 +16,11 @@
 git clone https://github.com/bibichanel/reverse-proxy-waf-model.git
 ```
 Sau khi pull về máy thì ta có các thư mục sau:
+
 ![image](https://user-images.githubusercontent.com/65753412/168476210-2c48acfc-9fe3-4f77-9b9f-73668cdd3800.png)
 
 _Các files **docker-compose.yml** có trong 3 thư mục **nginx**, **client**, **dvwa** để build và run thủ công từng máy. Nếu mọi người quan tâm có thể đọc qua._
-_Ngoài các tệp trên còn có:
+_Ngoài các tệp trên còn có:_
 - _File **modsecurity.sh** để pull và install ModSecurity(WAF) cho proxy Nginx (File được nằm tại workdir của container nginx)_
 - _File **nginx.conf** cấu hình redirect cho reverse proxy. (File được nằm trong thư mục /etc/nginx/ của container nginx)_
 - _Files **Dockerfile** để thiết lập cấu trúc cho docker image._
@@ -29,8 +30,6 @@ _Ngoài các tệp trên còn có:
 ```
 sudo docker-compose build
 ```
-Quá trình này tạo ra images từ Dockerfile và cài đặt các depedence, package, enviroments,... 
-
 
 ### 3. Chạy lệnh dưới đây để khởi động tất cả các container được chỉ định trong docker-compose.yml
 ```
@@ -49,7 +48,7 @@ Sau khi chạy xong câu lệnh **sudo docker-compose up** thì mô hình đã c
 #### Vậy làm sao để tích hợp modsec vào proxy?
 
 Nó khá là đơn giản hãy làm thủ công như sau:
-Bước 1: Truy cập vào command line của máy nginx 
+Bước 1: Truy cập vào container nginx 
 ```
 sudo docker exec -it <id-container> /bin/bash
 ```
