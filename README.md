@@ -38,20 +38,21 @@ sudo docker-compose up
 
 ## Lưu ý
 
-Sau khi chạy xong câu lệnh **sudo docker-compose up** thì mô hình đã chạy được với ModSecurity chưa được tích hợp trên Nginx proxy. Có nghĩa là thằng proxy này chưa có tường lửa. Bạn có thể truy cập vào web DVWA qua đường dẫn http://127.0.0.1/ tại local. Nó sẽ đi qua reverse proxy trước khi đến 1 trong 2 máy chủ DVWA.
+Sau khi chạy xong câu lệnh **sudo docker-compose up** thì mô hình đã chạy được, nhưng ModSecurity chưa được tích hợp trên Nginx proxy. Có nghĩa là thằng proxy này chưa có tường lửa. Bạn có thể truy cập vào web DVWA qua đường dẫn http://127.0.0.1/ tại local. Nó sẽ đi qua reverse proxy trước khi đến 1 trong 2 máy chủ DVWA.
 
 #### Vậy làm sao để tích hợp modsec vào proxy?
 
 Nó khá là đơn giản hãy làm thủ công như sau:
-Bước 1: Truy cập vào container nginx 
+
+**Bước 1:** Truy cập vào container nginx 
 ```
 sudo docker exec -it <id-container> /bin/bash
 ```
-Bước 2: Chạy file script có trong thư mục /nginxProxy
+**Bước 2:** Chạy file script có trong thư mục /nginxProxy
 ```
 ./modsecurity.sh
 ```
-Bước 3: Bỏ comment code các dòng lệnh trong file /etc/nginx/nginx.conf bằng trình **vim** như sau
+**Bước 3:** Bỏ comment code các dòng lệnh trong file /etc/nginx/nginx.conf bằng trình **vim** như sau
 ```
 include /etc/nginx/modules-enabled/*.conf;
 load_module /etc/nginx/modules/ngx_http_modsecurity_module.so;
@@ -59,7 +60,7 @@ load_module /etc/nginx/modules/ngx_http_modsecurity_module.so;
 modsecurity on;
 modsecurity_rules_file /etc/nginx/modsec/main.conf;
 ```
-Bước 4: Chạy lại service nginx
+**Bước 4:** Chạy lại service nginx
 ```
 service nginx restart
 ```
