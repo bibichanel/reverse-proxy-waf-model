@@ -7,7 +7,7 @@
  
 ## Yêu cầu
  - Máy ảo có dung lượng >= 20GB
- - Được cài đặt **docker** và **docker-compose**
+ - Đã cài: **docker**, **docker-compose**, **git**
  
 ## Cách cài đặt
 
@@ -34,11 +34,6 @@ sudo docker-compose build
 ### 3. Chạy lệnh dưới đây để khởi động tất cả các container được chỉ định trong docker-compose.yml
 ```
 sudo docker-compose up 
-```
-
-### 4. Để dừng và loại bỏ tất cả các vùng chứa
-```
-sudo docker-compose down
 ```
 
 ## Lưu ý
@@ -69,5 +64,10 @@ Bước 4: Chạy lại service nginx
 service nginx restart
 ```
 _Tại đây thì conatainer nginx sẽ thoát với code exit 0. Đừng lo lắng hãy chạy lại container và bạn sẽ thấy thành quả._
+
+### 4. Để dừng và loại bỏ tất cả các vùng chứa
+```
+sudo docker-compose down
+```
 
 ##### :underage: Bài viết sẽ được cập nhật sớm ...
