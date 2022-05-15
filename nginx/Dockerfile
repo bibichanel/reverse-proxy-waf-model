@@ -15,7 +15,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 ENV DEBCONF_NOWARNINGS="yes"
 
 RUN apt-get update -y; exit 0
-RUN apt-get install -y tcpdump git wget libssl-dev zlib1g-dev
+RUN apt-get install -y tcpdump git wget vim libssl-dev zlib1g-dev
 
 RUN apt install gcc make build-essential autoconf automake libtool libcurl4-openssl-dev liblua5.3-dev libfuzzy-dev ssdeep gettext pkg-config libpcre3 libpcre3-dev libxml2 libxml2-dev libcurl4 libgeoip-dev libyajl-dev doxygen -y
 
