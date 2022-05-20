@@ -45,6 +45,13 @@ services:
   networks:
    net-10.9.0.0:
     ipv4_address: 10.9.0.8
+    
+ acunetix:
+  image: invicti/acunetix:latest
+  container_name: "axmain"
+  ports:
+   - "3443:3443"
+   - "7880:7880"
 
 networks:
  net-10.9.0.0:
