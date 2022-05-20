@@ -1,6 +1,6 @@
 # Nginx Reverse Proxy - DVWA - CLient
 
-## Xây dựng mô hình 5 máy ảo chạy trên container của docker.
+## Xây dựng mô hình 5 container chạy trên môi trường của docker.
  - Client
  - Nginx reverse proxy 
  - 2 DVWA (Damn Vulnerable Web Application)
