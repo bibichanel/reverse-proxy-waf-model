@@ -1,9 +1,10 @@
 # Nginx Reverse Proxy - DVWA - CLient
 
-## Xây dựng mô hình 4 máy ảo chạy trên container của docker.
+## Xây dựng mô hình 5 máy ảo chạy trên container của docker.
  - Client
  - Nginx reverse proxy 
  - 2 DVWA (Damn Vulnerable Web Application)
+ - Acunetix
  
 ## Yêu cầu
  - Máy ảo có dung lượng >= 20GB
@@ -35,10 +36,14 @@ sudo docker-compose build
 ```
 sudo docker-compose up 
 ```
+### 4. Truy cập và cài đặt Acunetix.
+```
+https://localhost:3443/install.html
+```
 
 ## Lưu ý
 
-Sau khi chạy xong câu lệnh **sudo docker-compose up** thì mô hình đã chạy được, nhưng ModSecurity chưa được tích hợp trên Nginx proxy. Có nghĩa là thằng proxy này chưa có tường lửa. Bạn có thể truy cập vào web DVWA qua đường dẫn http://127.0.0.1/ tại local. Nó sẽ đi qua reverse proxy trước khi đến 1 trong 2 máy chủ DVWA.
+Sau khi chạy xong câu lệnh **sudo docker-compose up** thì mô hình đã chạy được, nhưng ModSecurity chưa được tích hợp trên Nginx proxy. Có nghĩa là thằng proxy này chưa có tường lửa. Bạn có thể truy cập vào web DVWA qua đường dẫn http://10.9.0.7/ tại local. Nó sẽ đi qua reverse proxy trước khi đến 1 trong 2 máy chủ DVWA.
 
 #### Vậy làm sao để tích hợp modsec vào proxy?
 
