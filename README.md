@@ -38,7 +38,7 @@ sudo docker-compose up
 ```
 ### 4. Truy cập và cài đặt Acunetix.
 ```
-https://localhost:3443
+https://10.9.0.10:3443
 ```
 
 ## Lưu ý
