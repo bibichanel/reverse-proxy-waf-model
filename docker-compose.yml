@@ -52,6 +52,9 @@ services:
   ports:
    - "3443:3443"
    - "7880:7880"
+  networks:
+   net-10.9.0.0:
+    ipv4_address: 10.9.0.10
 
 networks:
  net-10.9.0.0:
