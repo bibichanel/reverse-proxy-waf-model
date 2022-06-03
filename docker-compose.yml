@@ -47,7 +47,7 @@ services:
     ipv4_address: 10.9.0.8
     
  acunetix:
-  image: invicti/acunetix:latest
+  image: vouu/acu
   container_name: "axmain"
   ports:
    - "3443:3443"
